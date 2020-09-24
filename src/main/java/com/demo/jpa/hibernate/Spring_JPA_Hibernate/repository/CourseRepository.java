@@ -50,8 +50,25 @@ public class CourseRepository {
 	//this is a transactional so entity maanger will keep track of entity
 	public void playWithEntityManager() {
 		logger.info("play with entity manager --> start");
-		Course c = new Course("web services in 100 steps");
-		em.persist(c);
-		c.setName("web service 100 stpe updated");
+		//below you see can see that as 4 separate transacation as we using flush method
+		Course c1 = new Course("web services in 100 steps");
+		em.persist(c1);
+
+		Course c2 = new Course("Angular js in 100 steps");
+		em.persist(c2);
+		
+		em.flush();
+		
+		
+		//now i dont want course 2 changes to be updated in db , so what we can do is
+		em.detach(c2); //now entity manager wil no longer track  course 2
+		em.detach(c1);
+
+		c1.setName("web service 100 steps updated");
+		em.flush();
+		
+		c2.setName("Angular js in  100 step updated");
+		em.flush();
+		
 	}
 }

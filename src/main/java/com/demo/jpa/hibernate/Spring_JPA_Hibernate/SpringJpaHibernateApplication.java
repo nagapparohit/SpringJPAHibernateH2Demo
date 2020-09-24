@@ -27,7 +27,8 @@ public class SpringJpaHibernateApplication implements CommandLineRunner {
 		
 		Course course = repository.findById(10001L);
 		logger.info("Course 10001 {}",course);
-		repository.deleteById(10001L);
+		//its not good to delete the method here so we gonna move it from here to test
+		//repository.deleteById(10001L);
 	
 	}
 

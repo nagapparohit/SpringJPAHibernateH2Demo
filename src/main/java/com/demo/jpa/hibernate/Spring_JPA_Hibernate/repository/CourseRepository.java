@@ -29,6 +29,16 @@ public class CourseRepository {
 	}
 	
 	
+	public Course save(Course course) {
+		if(course.getId() == null) {
+			//insert
+			em.persist(course);
+		}else {
+			//update
+			em.merge(course);
+		}
+		return course;
+	}
 	//public course findById(long id);
 	//public course saveCourse(Course course) --> insert or update
 	//public void deleteById

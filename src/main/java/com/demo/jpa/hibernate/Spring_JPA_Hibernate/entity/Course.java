@@ -14,16 +14,19 @@ public class Course {
 	
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	
 	private String name;
 	
 	protected Course() {
 		// TODO Auto-generated constructor stub
 	}
+
+	public Long getId() {
+		return id;
+	}
 	
-	
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -45,6 +48,8 @@ public class Course {
 	public String toString() {
 		return "Course [id=" + id + ", name=" + name + "]";
 	}
+
+
 	
 	
 	

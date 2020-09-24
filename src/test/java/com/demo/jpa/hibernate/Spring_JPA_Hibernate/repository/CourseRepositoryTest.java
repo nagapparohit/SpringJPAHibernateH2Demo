@@ -51,4 +51,23 @@ public class CourseRepositoryTest {
 		assertNull(repository.findById(10002L));
 		
 	}
+	
+	//save method is going to change the state of db so we goona use dirties annothation
+	@Test
+	@DirtiesContext
+	void save_BasicTest() {
+		logger.info(" save method Test for update and insert is running");
+		//get the course
+		Course course = repository.findById(10001L);
+		assertEquals("JPA in 50 steps", course.getName());
+		
+		//update the detials
+		course.setName("JPA in 50 steps -> updated");
+		repository.save(course);
+		
+		//check the value is fine or not
+		Course course1 = repository.findById(10001L);
+		assertEquals("JPA in 50 steps -> updated", course1.getName());
+		
+	}
 }

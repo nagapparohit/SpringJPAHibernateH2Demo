@@ -18,7 +18,7 @@ public class Course {
 	
 	private String name;
 	
-	public Course() {
+	protected Course() {
 		// TODO Auto-generated constructor stub
 	}
 	

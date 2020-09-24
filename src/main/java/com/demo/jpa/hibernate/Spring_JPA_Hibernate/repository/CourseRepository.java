@@ -59,11 +59,13 @@ public class CourseRepository {
 		
 		em.flush();
 		
-		
+		em.clear();
 		//now i dont want course 2 changes to be updated in db , so what we can do is
-		em.detach(c2); //now entity manager wil no longer track  course 2
-		em.detach(c1);
+		//em.detach(c2); //now entity manager wil no longer track  course 2
+		//em.detach(c1);
 
+		//below update wont saved to the database as objects are detached , now these are not tracking
+		//other way to untrack objects by entity manager is by clear() method
 		c1.setName("web service 100 steps updated");
 		em.flush();
 		

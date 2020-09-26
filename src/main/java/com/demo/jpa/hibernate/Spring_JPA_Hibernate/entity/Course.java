@@ -3,6 +3,7 @@ package com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Without entity it is like any other java bean
@@ -10,6 +11,7 @@ import javax.persistence.Id;
  *
  */
 @Entity
+@Table(name="course")
 public class Course {
 	
 	@Id

@@ -18,7 +18,7 @@ public class Course {
 	private Long id;
 	
 
-	@Column(name="fullname")
+	@Column(name="fullname",nullable =false)
 	private String name;
 	
 	protected Course() {

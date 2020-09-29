@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
-
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -31,8 +29,26 @@ public class NativeQueriesTest {
 	@SuppressWarnings("rawtypes")
 	@Test
 	void native_queries_basic() {
-		 Query query = em.createQuery("Select c from Course c");
+		 Query query = em.createNativeQuery("Select * from Course",Course.class);
 		 List resultList = query.getResultList();
-		 logger.info("\njpql basic\nSelect c from Course c --> \n{} ",resultList);
+		 logger.info("\nNative  basic\nSelect * from Course  --> \n{} ",resultList);
 	}
+	
+	@Test
+	void native_queries_with_parameter() {
+		 Query query = em.createNativeQuery("Select * from Course where id = ?",Course.class);
+		 query.setParameter(1, 10001L);
+		 List resultList = query.getResultList();
+		 logger.info("\nNative  basic\nSelect * from Course where id = ? --> \n{} ",resultList);
+	}
+	
+	
+	@Test
+	void native_queries_with_named_parameter() {
+		 Query query = em.createNativeQuery("Select * from Course where id = :id",Course.class);
+		 query.setParameter("id", 10001L);
+		 List resultList = query.getResultList();
+		 logger.info("\nNative  basic\nSelect * from Course where id = :id --> \n{} ",resultList);
+	}
+	
 }

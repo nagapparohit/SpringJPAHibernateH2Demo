@@ -54,23 +54,27 @@ public class CourseRepository {
 		Course c1 = new Course("web services in 100 steps");
 		em.persist(c1);
 
-		Course c2 = new Course("Angular js in 100 steps");
-		em.persist(c2);
 		
-		em.flush();
+		Course c2 = findById(10001L);
+		c2.setName("JPA in 50 steps updated");
+		//Course c2 = new Course("Angular js in 100 steps");
 		
-		em.clear();
+		//em.persist(c2);
+		
+		//em.flush();
+		
+		//em.clear();
 		//now i dont want course 2 changes to be updated in db , so what we can do is
 		//em.detach(c2); //now entity manager wil no longer track  course 2
 		//em.detach(c1);
 
 		//below update wont saved to the database as objects are detached , now these are not tracking
 		//other way to untrack objects by entity manager is by clear() method
-		c1.setName("web service 100 steps updated");
-		em.flush();
+		//c1.setName("web service 100 steps updated");
+		//em.flush();
 		
-		c2.setName("Angular js in  100 step updated");
-		em.flush();
+		//c2.setName("Angular js in  100 step updated");
+		//em.flush();
 		
 	}
 }

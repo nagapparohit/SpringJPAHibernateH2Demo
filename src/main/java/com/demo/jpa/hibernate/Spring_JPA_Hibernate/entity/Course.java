@@ -1,9 +1,14 @@
 package com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 /**
  * Without entity it is like any other java bean
@@ -18,8 +23,16 @@ public class Course {
 	private Long id;
 	
 
-	@Column(name="fullname",nullable =false)
+	@Column(nullable =false)
 	private String name;
+	
+	@UpdateTimestamp
+	private LocalDateTime  lastUpdatedDate;
+	
+	
+	@CreationTimestamp
+	private LocalDateTime createdDate;
+	
 	
 	protected Course() {
 		// TODO Auto-generated constructor stub

@@ -24,7 +24,7 @@ public class SpringJpaHibernateApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		repository.playWithEntityManager();
+		//repository.playWithEntityManager();
 		//Course course = repository.findById(10001L);
 		//logger.info("Course 10001 {}",course);
 		//repository.save(new Course("Micro services in 100 steps"));

@@ -47,7 +47,16 @@ public class Student {
 		this.id = id;
 	}
 
+	
 
+
+	public Passport getPassport() {
+		return passport;
+	}
+
+	public void setPassport(Passport passport) {
+		this.passport = passport;
+	}
 
 	public String getName() {
 		return name;

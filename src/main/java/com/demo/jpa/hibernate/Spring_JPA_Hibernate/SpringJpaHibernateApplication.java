@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.Course;
 import com.demo.jpa.hibernate.Spring_JPA_Hibernate.repository.CourseRepository;
+import com.demo.jpa.hibernate.Spring_JPA_Hibernate.repository.StudentRepository;
 
 @SpringBootApplication
 public class SpringJpaHibernateApplication implements CommandLineRunner {
@@ -16,7 +17,10 @@ public class SpringJpaHibernateApplication implements CommandLineRunner {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-	public CourseRepository repository;
+	public CourseRepository courseRepository;
+	
+	@Autowired
+	public StudentRepository studentRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringJpaHibernateApplication.class, args);
@@ -24,13 +28,7 @@ public class SpringJpaHibernateApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		//repository.playWithEntityManager();
-		//Course course = repository.findById(10001L);
-		//logger.info("Course 10001 {}",course);
-		//repository.save(new Course("Micro services in 100 steps"));
-		//its not good to delete the method here so we gonna move it from here to test
-		//repository.deleteById(10001L);
-	
+		studentRepository.saveStudentWithPassport();
 	}
 
 }

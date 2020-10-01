@@ -30,7 +30,9 @@ public class Passport {
 	@Column(nullable =false)
 	private String number;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	//so that we dont have col's in both student and passport table ,to avaoid dupicate we use mapped by
+	//so now student is owning side of relationhip
+	@OneToOne(fetch = FetchType.LAZY,mappedBy = "passport")
 	private Student student;
 	
 	

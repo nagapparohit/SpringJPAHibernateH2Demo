@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.demo.jpa.hibernate.Spring_JPA_Hibernate.SpringJpaHibernateApplication;
 import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.Student;
@@ -27,6 +28,7 @@ public class StudentRepositoryTest {
 	EntityManager em;
 	
 	@Test
+	@Transactional
 	void retrieveStuentAndPassportDetails() {
 		Student student = em.find(Student.class, 20001L);
 		logger.info("student --> {}",student);

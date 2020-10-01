@@ -28,7 +28,9 @@ public class SpringJpaHibernateApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		studentRepository.saveStudentWithPassport();
+		//studentRepository.saveStudentWithPassport();
+		studentRepository.someTranscation();
+		
 	}
 
 }

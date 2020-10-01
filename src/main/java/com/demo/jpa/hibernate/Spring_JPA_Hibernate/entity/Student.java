@@ -48,9 +48,6 @@ public class Student {
 		this.id = id;
 	}
 
-	
-
-
 	public Passport getPassport() {
 		return passport;
 	}

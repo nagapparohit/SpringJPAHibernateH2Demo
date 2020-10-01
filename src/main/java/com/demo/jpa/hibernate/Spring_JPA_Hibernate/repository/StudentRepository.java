@@ -48,6 +48,31 @@ public class StudentRepository {
 		return student;
 	}
 	
+	 //persistence context will be created , its a place all the entites are stored
+	public void someTranscation() {
+		//if no trnacation is created the each call will be acted as it own transacation
+		//database operation 1 retrieve studen
+		Student student = em.find(Student.class, 20001L);
+		//persistence context (student)
+		logger.info("\nstudent --> \n{}",student);
+		
+		//database operation 2 retrieve passport
+		Passport passport = student.getPassport();
+		//persistence context (student,passport)
+		logger.info("\nstudent passport detials --> \n{}",student.getPassport());
+		
+		//database operation 3 update passport 
+		passport.setNumber("P123456");
+		//persistence context (student,passport++)
+		logger.info("\nstudent passport updated detials --> \n{}",student.getPassport());
+		
+		//database operation 4 update student
+		student.setName("Ranga -->update");
+		//persistence context (student++,passport++)
+		logger.info("\nstudent updated --> \n{}",student);
+		
+	}
+	
 	//this is a transactional so entity maanger will keep track of entity
 	public void saveStudentWithPassport() {
 		//we need to first persist the passport in the datbase then only we can save as it passport in transient property of student

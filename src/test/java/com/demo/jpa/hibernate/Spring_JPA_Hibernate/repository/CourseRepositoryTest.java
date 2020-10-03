@@ -3,6 +3,8 @@ package com.demo.jpa.hibernate.Spring_JPA_Hibernate.repository;
 import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import javax.transaction.Transactional;
+
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -77,5 +79,17 @@ public class CourseRepositoryTest {
 	public void playWithEntityManager() {
 		repository.playWithEntityManager();
 	}
+	
+	
+	@Test
+	@DirtiesContext
+	@Transactional
+	public void retrieveReviewForCourse() {
+	
+		Course c = repository.findById(10001L);
+		logger.info("\n{}",c.getReviews());
+	
+	}
+	
 	
 }

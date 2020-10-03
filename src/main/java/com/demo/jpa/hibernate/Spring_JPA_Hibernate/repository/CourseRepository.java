@@ -1,5 +1,7 @@
 package com.demo.jpa.hibernate.Spring_JPA_Hibernate.repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import org.slf4j.Logger;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.Course;
+import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.Review;
 
 @Repository
 @Transactional
@@ -46,6 +49,56 @@ public class CourseRepository {
 		}
 		return course;
 	}
+	
+	public void addHardCodedReviewsForCourse() {
+		//get course 10003
+		Course course = findById(10003L);
+		logger.info("\ncourse.getReviews()\n{}",course.getReviews());
+		
+		//add 2 reviews to it
+		Review r1 = new Review("5","great hands on stuff");
+		Review r2 = new Review("5","Hats off");
+
+		//setting the relation ship
+		course.addReview(r1);
+		r1.setCourse(course);
+		
+		course.addReview(r2);
+		r2.setCourse(course);
+		
+		//save it to database
+		em.persist(r1);
+		em.persist(r2);
+		
+	}
+	
+	
+	
+	public void addReviewsForCourse(Long courseId,List<Review> reviews){
+		//get course 10003
+		Course course = findById(courseId);
+		logger.info("\ncourse.getReviews()\n{}",course.getReviews());
+		
+		for(Review r :reviews) {
+			course.addReview(r);
+			r.setCourse(course);
+			em.persist(r);
+		}
+
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	//this is a transactional so entity maanger will keep track of entity
 	public void playWithEntityManager() {

@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * Without entity it is like any other java bean
@@ -22,7 +23,8 @@ public class Review {
 	@Column
 	private String description;
 	
-	
+	@ManyToOne
+	private Course course;
 	
 	protected Review() {
 		// TODO Auto-generated constructor stub
@@ -32,6 +34,15 @@ public class Review {
 		this.rating = rating;
 		this.description = description;
 	}
+	
+	public Course getCourse() {
+		return course;
+	}
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+	
+	
 	public Long getId() {
 		return id;
 	}

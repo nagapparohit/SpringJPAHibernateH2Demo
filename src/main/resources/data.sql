@@ -14,6 +14,6 @@ insert into student(id,name,passport_id) values (20003,'Jane',40003);
 
 
 
-insert into review(id,rating,description) values (50001,'4','Good course');
-insert into review(id,rating,description) values (50002,'5','wonderful course');
-insert into review(id,rating,description) values (50003,'4','nice course');
+insert into review(id,rating,description,course_id) values (50001,'4','Good course',10001);
+insert into review(id,rating,description,course_id) values (50002,'5','wonderful course',10001);
+insert into review(id,rating,description,course_id) values (50003,'4','nice course',10003);

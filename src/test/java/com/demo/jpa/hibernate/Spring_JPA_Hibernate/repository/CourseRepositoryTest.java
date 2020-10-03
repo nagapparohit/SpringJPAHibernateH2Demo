@@ -3,6 +3,7 @@ package com.demo.jpa.hibernate.Spring_JPA_Hibernate.repository;
 import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Test;
@@ -16,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.demo.jpa.hibernate.Spring_JPA_Hibernate.SpringJpaHibernateApplication;
 import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.Course;
+import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.Review;
 
 
 @RunWith(SpringRunner.class)
@@ -31,6 +33,9 @@ public class CourseRepositoryTest {
 	 */
 	@Autowired
 	CourseRepository repository;
+	
+	@Autowired
+	EntityManager em;
 	
 	@Test
 	void findById_BasicTest() {
@@ -91,5 +96,16 @@ public class CourseRepositoryTest {
 	
 	}
 	
+	
+	
+	@Test
+	@DirtiesContext
+	@Transactional
+	public void retrieveCourseForReview() {
+	
+		Review  r = em.find(Review.class, 50001L);
+		logger.info("\r courses n{}",r.getCourse());
+	
+	}
 	
 }

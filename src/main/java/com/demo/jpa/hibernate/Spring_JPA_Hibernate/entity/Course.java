@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -40,6 +41,9 @@ public class Course {
 	@OneToMany(mappedBy = "course",fetch = FetchType.EAGER)
 	private List<Review> reviews = new ArrayList<>();
 	
+	@ManyToMany
+	private List<Student> students = new ArrayList<>();
+	
 	@UpdateTimestamp
 	private LocalDateTime  lastUpdatedDate;
 	
@@ -47,6 +51,15 @@ public class Course {
 	@CreationTimestamp
 	private LocalDateTime createdDate;
 	
+	
+	
+	public List<Student> getStudents() {
+		return students;
+	}
+	
+	public void addStudent(Student student) {
+		this.students.add(student);
+	}
 	
 	protected Course() {
 		// TODO Auto-generated constructor stub

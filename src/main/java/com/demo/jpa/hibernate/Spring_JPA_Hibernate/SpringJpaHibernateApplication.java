@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.Course;
 import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.Review;
+import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.Student;
 import com.demo.jpa.hibernate.Spring_JPA_Hibernate.repository.CourseRepository;
 import com.demo.jpa.hibernate.Spring_JPA_Hibernate.repository.StudentRepository;
 
@@ -36,11 +37,14 @@ public class SpringJpaHibernateApplication implements CommandLineRunner {
 		//studentRepository.someTranscation();
 		//courseRepository.addHardCodedReviewsForCourse();
 		
-		List<Review> reviews = new ArrayList<>();
-		reviews.add(new Review("5","great hands on stuff 28 mins"));
-		reviews.add(new Review("5","Hats off 28 mns"));
+//		List<Review> reviews = new ArrayList<>();
+//		reviews.add(new Review("5","great hands on stuff 28 mins"));
+//		reviews.add(new Review("5","Hats off 28 mns"));
+//		
+//		courseRepository.addReviewsForCourse(10003L, reviews);
 		
-		courseRepository.addReviewsForCourse(10003L, reviews);
+	//	studentRepository.insertHardCodedStudentAndCourse();
+		studentRepository.insertStudentAndCourse(new Student("Nick"),new Course("micro 100 stpes"));
 
 	}
 

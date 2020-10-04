@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.Course;
 import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.Passport;
 import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.Student;
 
@@ -84,4 +85,39 @@ public class StudentRepository {
 		em.persist(student);
 		
 	}
+	
+	
+	
+	
+	
+	public void insertHardCodedStudentAndCourse() {
+		
+		Student student = new Student("Jack");
+		Course course = new Course("Micro in 100 steps");
+		
+		em.persist(course);
+		em.persist(student);
+		
+		student.addCourse(course);
+		course.addStudent(student);
+		
+		//persist the owning side
+		em.persist(student);
+	}
+	
+	public void insertStudentAndCourse(Student student,Course course) {
+		student.addCourse(course);
+		course.addStudent(student);
+		em.persist(course);
+		em.persist(student);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

@@ -41,7 +41,7 @@ public class Course {
 	@OneToMany(mappedBy = "course",fetch = FetchType.EAGER)
 	private List<Review> reviews = new ArrayList<>();
 	
-	@ManyToMany
+	@ManyToMany(mappedBy = "courses")
 	private List<Student> students = new ArrayList<>();
 	
 	@UpdateTimestamp

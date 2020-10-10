@@ -1,5 +1,6 @@
 package com.demo.jpa.hibernate.Spring_JPA_Hibernate;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +12,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.Course;
+import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.FullTimeEmployee;
+import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.PartTimeEmployee;
 import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.Review;
 import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.Student;
 import com.demo.jpa.hibernate.Spring_JPA_Hibernate.repository.CourseRepository;
+import com.demo.jpa.hibernate.Spring_JPA_Hibernate.repository.EmployeeRepository;
 import com.demo.jpa.hibernate.Spring_JPA_Hibernate.repository.StudentRepository;
 
 @SpringBootApplication
@@ -26,6 +30,9 @@ public class SpringJpaHibernateApplication implements CommandLineRunner {
 	
 	@Autowired
 	public StudentRepository studentRepository;
+	
+	@Autowired
+	public EmployeeRepository employeeRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringJpaHibernateApplication.class, args);
@@ -44,8 +51,12 @@ public class SpringJpaHibernateApplication implements CommandLineRunner {
 //		courseRepository.addReviewsForCourse(10003L, reviews);
 		
 	//	studentRepository.insertHardCodedStudentAndCourse();
-		studentRepository.insertStudentAndCourse(new Student("Nick"),new Course("micro 100 stpes"));
-
+	//	studentRepository.insertStudentAndCourse(new Student("Nick"),new Course("micro 100 stpes"));
+		employeeRepository.insert(new FullTimeEmployee("Jack", new BigDecimal("10000")));
+		employeeRepository.insert(new PartTimeEmployee("Jill", new BigDecimal("50")));
+		
+		logger.info("\n-->All employess \n{}",employeeRepository.retireveAllEmployees());
+		
 	}
 
 }

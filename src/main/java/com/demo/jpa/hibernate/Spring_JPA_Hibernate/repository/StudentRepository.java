@@ -87,9 +87,6 @@ public class StudentRepository {
 	}
 	
 	
-	
-	
-	
 	public void insertHardCodedStudentAndCourse() {
 		
 		Student student = new Student("Jack");

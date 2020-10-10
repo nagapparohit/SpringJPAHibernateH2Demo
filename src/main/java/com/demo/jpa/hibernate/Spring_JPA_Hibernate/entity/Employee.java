@@ -26,8 +26,7 @@ import org.hibernate.annotations.UpdateTimestamp;
  *
  */
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@DiscriminatorColumn(name = "EmpType")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Employee {
 	
 	@Id

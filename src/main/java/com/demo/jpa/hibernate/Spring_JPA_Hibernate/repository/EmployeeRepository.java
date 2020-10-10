@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.Course;
 import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.Employee;
+import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.FullTimeEmployee;
+import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.PartTimeEmployee;
 import com.demo.jpa.hibernate.Spring_JPA_Hibernate.entity.Review;
 
 @Repository
@@ -31,6 +33,14 @@ public class EmployeeRepository {
 	//retrive all eployee
 	public List<Employee> retireveAllEmployees(){
 		return em.createQuery("select e from Employee e",Employee.class).getResultList();
+	}
+	
+	public List<FullTimeEmployee> retireveFullTimeEmployees(){
+		return em.createQuery("select e from FullTimeEmployee e",FullTimeEmployee.class).getResultList();
+	}
+	
+	public List<PartTimeEmployee> retirevePartTimeEmployees(){
+		return em.createQuery("select e from PartTimeEmployee e",PartTimeEmployee.class).getResultList();
 	}
 		
 }
